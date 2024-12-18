@@ -9,23 +9,35 @@ const endOfRange = 10;
 // 5
 // 7
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
+const isNumberHasMoreThan2Factors = function (primeCandidate, divisor) {
+  if (Math.pow(divisor, 2) > primeCandidate) {
+    return true;
+  }
 
-for (let primeCandidate = startOfRange; primeCandidate <= endOfRange; primeCandidate++) {
-    let divisor = 2;
-    let isPrime = true;
-
-    while (divisor < primeCandidate) {
-        if (primeCandidate % divisor === 0) {
-            isPrime = false;
-        }
-        divisor++;
-    }
-
-    if (primeCandidate < 2) {
-        isPrime = false;
-    }
-
-    if (isPrime) {
-        console.log(primeCandidate);
-    }
+  return primeCandidate % divisor === 0 ? false : 
+  isNumberHasMoreThan2Factors(primeCandidate, divisor + 1); 
 }
+
+const isPrime = function (primeCandidate) {
+  if (primeCandidate < 2) {
+    return false;
+  }
+
+  return isNumberHasMoreThan2Factors(primeCandidate, 2);
+}
+
+const primeRange = function (startRange, endRange) {
+  const primeCandidate = startRange < 2 ? 2 : startRange;
+
+  if (startRange > endRange) {
+    return;
+  }
+
+  if (isPrime(primeCandidate)) {
+    console.log(primeCandidate);
+  }
+
+  return primeRange(primeCandidate + 1, endRange);
+}
+
+primeRange(startOfRange, endOfRange);
