@@ -13,11 +13,20 @@ const n = 7;
 // 8
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
 
-let fibonacciSecondLast = 0;
-let fibonacciLast = 1;
+// recursion
 
-for (let nth = 1; nth <= n; nth++ ) {
-    console.log(fibonacciSecondLast);
-    fibonacciLast = fibonacciLast + fibonacciSecondLast;
-    fibonacciSecondLast = fibonacciLast - fibonacciSecondLast;
+const fibonacciTerm = function (currentTerm, nextTerm, termLeft) {
+  if (termLeft <= 0) {
+    return;
+  }
+
+  console.log(currentTerm);
+
+  return fibonacciTerm(currentTerm + nextTerm, currentTerm, termLeft - 1);
 }
+
+const fibonacci = function (term) {
+  return fibonacciTerm(0, 1, term);
+}
+
+fibonacci(n)
