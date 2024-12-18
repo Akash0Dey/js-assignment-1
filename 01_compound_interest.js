@@ -7,18 +7,14 @@ const t = 2;    //  t = 1,   3
 // Do not use compound interest formula to calculate the compound interest.
 // Use simple interest formula and a loop to calculate the compound interest.
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
-function range(start, end, step) {
-  let numbers = [];
+// recursion
 
-  for (let number = start; number < end; number += step) {
-    numbers.push(number);
+const compoundAmount = function (priciple, rate, time) {
+  if (time <= 0) {
+    return priciple;
   }
 
-  return numbers;
+  return compoundAmount(priciple + (priciple * rate) / 100, rate, time - 1);
 }
 
-const compoundAmount = function([principle, rate], a){
-  return [principle + (principle * rate) / 100, rate];
-}
-
-console.log(range(0, t, 1).reduce(compoundAmount, [p, r])[0] - p);
+console.log(compoundAmount(p, r, t) - p);
