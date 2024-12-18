@@ -5,10 +5,14 @@ const n = 5;
 // Do not print anything else. Printing more than one output or printing anything other than factorial might will be consider as error.
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
 
-let factorial = 1;
+// recursion
 
-for (let multiplyingNumber = 2; multiplyingNumber <= n; multiplyingNumber++) {
-    factorial = factorial * multiplyingNumber;
+const factorial = function (number) {
+  if (number === 0) {
+    return 1;
+  }
+
+  return number * factorial(number - 1);
 }
 
-console.log(factorial);
+console.log(factorial(n));
