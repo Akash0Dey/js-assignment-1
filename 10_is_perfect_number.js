@@ -8,17 +8,13 @@ const a = 28;
 // Printing more than one output or printing anything other than perfect or not perfect might will be consider as error.
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
 
-let sumOfProperDivisor=0;
+const sumOfProperFractor = function (number, divisor) {
+  if (number < divisor * divisor) {
+    return 1;
+  }
 
-for(let divisor = 1; divisor <= a/2; divisor++){
-    if (a % divisor === 0){
-        sumOfProperDivisor = sumOfProperDivisor + divisor;
-    }
+  const sum = number % divisor === 0 ? (number / divisor) + divisor : 0;
+  return sum + sumOfProperFractor(number, divisor + 1);
 }
 
-let isPerfect = (sumOfProperDivisor === a)
-if (a===0){
-    isPerfect = false;
-}
-
-console.log(isPerfect);
+console.log(sumOfProperFractor(a, 2) === a);
