@@ -8,21 +8,12 @@ const a = 371;
 // Printing more than one output or printing anything other than armstrong or not armstrong might will be consider as error.
 // START YOUR CODE AFTER THIS LINE. DO NOT REMOVE THIS LINE
 
-// let numberOfDigit = 1;
+const isArmstrong = function (number) {
+  if (number < 10) {
+    return Math.pow(number, 3);
+  }
 
-// while (10 ** numberOfDigit <= a) {
-//     numberOfDigit++;
-// }
+  return Math.pow(number % 10, 3) + isArmstrong(Math.floor(number / 10));
+}
 
-// let sumOfPowerOfDigit = 0;
-// let remainingNumber=a;
-
-// while (remainingNumber != 0) {
-//     const reminder = remainingNumber % 10;
-//     sumOfPowerOfDigit = sumOfPowerOfDigit + reminder ** numberOfDigit;
-//     remainingNumber = (remainingNumber - reminder) / 10;
-// }
-
-// const isArmstrong = (a === sumOfPowerOfDigit);
-
-// console.log(isArmstrong);
+console.log(isArmstrong(a) === a);
